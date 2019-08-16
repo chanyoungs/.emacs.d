@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'http://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><p class="date">Created: 2017-03-30 Thu 09:44</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgb51911a">1. Interface tweaks</a></li>
+<li><a href="#/slide-orgcdeb880">2. Try</a></li>
+<li><a href="#/slide-orge32140c">3. Which key</a></li>
+<li><a href="#/slide-org11387e4">4. Org-mode</a></li>
+<li><a href="#/slide-org7d39c30">5. Ace-window</a></li>
+<li><a href="#/slide-org4ee3ed3">6. Swiper</a></li>
+<li><a href="#/slide-org3cd7312">7. Auto-complete</a></li>
+<li><a href="#/slide-org4700dd1">8. Themes</a></li>
+<li><a href="#/slide-orgfcef58f">9. Reveal.js</a></li>
+<li><a href="#/slide-orgcd9a5a1">10. Python</a>
+<ul>
+<li><a href="#/slide-org4185da2">10.1. Flycheck</a></li>
+<li><a href="#/slide-org6004bca">10.2. Jedi</a></li>
+<li><a href="#/slide-org9af91c9">10.3. Projectile</a></li>
+<li><a href="#/slide-org6a0e403">10.4. epc</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<section id="slide-orgb51911a">
+<h2 id="orgb51911a"><span class="section-number-2">1</span> Interface tweaks</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(setq inhibit-startup-message t)
+(fset 'yes-or-no-p 'y-or-n-p)
+(global-set-key (kbd "&lt;f5&gt;") 'revert-buffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcdeb880">
+<h2 id="orgcdeb880"><span class="section-number-2">2</span> Try</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(use-package try
+  :ensure t)
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orge32140c">
+<h2 id="orge32140c"><span class="section-number-2">3</span> Which key</h2>
+<p>
+Brings up some help
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org11387e4">
+<h2 id="org11387e4"><span class="section-number-2">4</span> Org-mode</h2>
+<p>
+For some reason, org-bullets causes org-mode and swiper to be extremely slow.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(setq org-hide-leading-stars t)
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org7d39c30">
+<h2 id="org7d39c30"><span class="section-number-2">5</span> Ace-window</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(use-package ace-window
+  :ensure t
+  :init
+(progn
+  (global-set-key [remap other-window] 'ace-window)
+  (custom-set-faces
+   '(aw-leading-char-face
+     ((t (:inherit ace-jump-face-foreground :height 3.0)))))
+  ))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4ee3ed3">
+<h2 id="org4ee3ed3"><span class="section-number-2">6</span> Swiper</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(use-package counsel
+  :ensure t
+  )
+
+(use-package swiper
+  :ensure t
+  :config
+  (progn
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq enable-recursive-minibuffers t)
+    (global-set-key "\C-s" 'swiper)
+    (global-set-key (kbd "C-c C-r") 'ivy-resume)
+    (global-set-key (kbd "&lt;f6&gt;") 'ivy-resume)
+    (global-set-key (kbd "M-x") 'counsel-M-x)
+    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+    (global-set-key (kbd "&lt;f1&gt; f") 'counsel-describe-function)
+    (global-set-key (kbd "&lt;f1&gt; v") 'counsel-describe-variable)
+    (global-set-key (kbd "&lt;f1&gt; l") 'counsel-find-library)
+    (global-set-key (kbd "&lt;f2&gt; i") 'counsel-info-lookup-symbol)
+    (global-set-key (kbd "&lt;f2&gt; u") 'counsel-unicode-char)
+    (global-set-key (kbd "C-c g") 'counsel-git)
+    (global-set-key (kbd "C-c j") 'counsel-git-grep)
+    (global-set-key (kbd "C-c k") 'counsel-ag)
+    (global-set-key (kbd "C-x l") 'counsel-locate)
+    (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+    ))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org3cd7312">
+<h2 id="org3cd7312"><span class="section-number-2">7</span> Auto-complete</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(use-package auto-complete
+  :ensure t
+  :init
+  (progn
+    (ac-config-default)
+    (global-auto-complete-mode t)
+    ))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org4700dd1">
+<h2 id="org4700dd1"><span class="section-number-2">8</span> Themes</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(use-package color-theme
+  :ensure t)
+
+(use-package zenburn-theme
+  :ensure t
+  :config (load-theme 'zenburn t))
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfcef58f">
+<h2 id="orgfcef58f"><span class="section-number-2">9</span> Reveal.js</h2>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(setq org-reveal-mathjax t)
+(use-package ox-reveal
+  :ensure ox-reveal)
+(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/"
+     )
+</pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgcd9a5a1">
+<h2 id="orgcd9a5a1"><span class="section-number-2">10</span> Python</h2>
+<p>
+<a href="https://www.youtube.com/watch?v=6BlTGPsjGJk">Emacs as a Python IDE - youtube</a>
+Make sure that you have:
+</p>
+<ol>
+<li>pip</li>
+<li>pip install virtualenv</li>
+
+</ol>
+</section>
+<section id="slide-org4185da2">
+<h3 id="org4185da2"><span class="section-number-3">10.1</span> Flycheck</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
+</pre>
+</div>
+</section>
+<section id="slide-org6004bca">
+<h3 id="org6004bca"><span class="section-number-3">10.2</span> Jedi</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(use-package jedi
+  :ensure t
+  :init
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (add-hook 'python-mode-hook 'jedi:ac-setup))
+</pre>
+</div>
+
+</section>
+<section id="slide-org9af91c9">
+<h3 id="org9af91c9"><span class="section-number-3">10.3</span> Projectile</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(use-package projectile
+  :ensure    projectile
+  :config    (projectile-global-mode t)
+  :diminish   projectile-mode)
+</pre>
+</div>
+
+</section>
+<section id="slide-org6a0e403">
+<h3 id="org6a0e403"><span class="section-number-3">10.4</span> epc</h3>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp">(use-package epc
+  :ensure t)
+</pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'http://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

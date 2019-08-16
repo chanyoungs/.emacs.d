@@ -1,0 +1,31 @@
+* Basics
+** C-x z: Repeats previous command. Run in once and then subsequently press z to repeat. e.g. C-p C-x z then zzzzzz
+** M-%: find & replace string. Type 'y' to replace, '!' to replace all occurences below the point.
+
+* In the minibuffer
+
+** M-p moves to the previous input in minibuffer history.
+** M-n moves to the next input in minibuffer
+** M-r searches for an input that matches the supplied regexp.
+
+* Register
+** C-x r w REG 	Command: window-configuration-to-register
+   Save the window configuration of current frame into register REG
+** C-x r f REG 	Command: frame-configuration-to-register
+   Save the state of all frames, including all their windows, in register REG
+** C-x r j REG 	Command: jump-to-register
+   Jump to a register REG.
+* Macros
+** C-x C-k r: run the last keyboard macro on each line that begins in the region (apply-macro-to-region-lines)
+* Autocomplete
+  When for example you wish to create or rename a file and autocomplete is suggesting a similar filename, press C-M-j to enter avoiding the suggestion
+* How to have user directory settings without altering the environment variables
+  First make a .emacs file in the system HOME directory with the following code:
+  #+BEGIN_SRC emacs-lisp
+    ;; Place this file in C:/Users/chanyoungs and point to the appropriate files
+    (setq user-init-file "C:/Users/chanyoungs/Documents/Programming/emacs/.emacs.d/init.el")
+    (setq user-emacs-directory "C:/Users/chanyoungs/Documents/Programming/emacs/.emacs.d/")
+    (setq default-directory "C:/Users/chanyoungs/Documents/Programming/")
+    (setenv "HOME" "C:/Users/chanyoungs/Documents/Programming/emacs/")
+    (load user-init-file)
+  #+END_SRC

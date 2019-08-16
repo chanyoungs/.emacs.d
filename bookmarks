@@ -1,0 +1,15 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("Dired"
+ (filename . "c:/Users/Chan-Young/Documents/Programming/")
+ (front-context-string . "EX1\n  drwxrwxrwx")
+ (rear-context-string . "  0 09-23 10:47 ")
+ (position . 2062))
+("main.cpp"
+ (filename . "c:/Users/Chan-Young/Documents/Programming/C++ Programs/FIC MEEITING/Prime generators/main.cpp")
+ (front-context-string . "                ")
+ (rear-context-string . "              {\n")
+ (position . 2821))
+)
