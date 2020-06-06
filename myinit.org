@@ -1,3 +1,5 @@
+* !!PATHS used in this file!!
+** See Magit "GIT_SSH"
 * Things to do outside of emacs
   Search contents for "outside of emacs"
 
@@ -587,6 +589,7 @@ How to notes
     (use-package magit
       :ensure t)
     (global-set-key (kbd "C-x g") 'magit-status)
+    (setenv "GIT_SSH" "C:/Program Files/PuTTY/plink.exe")
   #+END_SRC
 * undo-tree
   C-/ to undo, C-S-/ to redo
