@@ -368,6 +368,7 @@ is already narrowed."
 (use-package magit
   :ensure t)
 (global-set-key (kbd "C-x g") 'magit-status)
+(setenv "GIT_SSH" "C:/Program Files/PuTTY/plink.exe")
 
 (use-package undo-tree
      :ensure t

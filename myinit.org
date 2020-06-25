@@ -4,6 +4,10 @@
   Search contents for "outside of emacs"
 
 How to notes
+* Emacs daemon server
+  Run command: C:\Users\chany\Documents\Programming\emacs\emacs-26.3-x86_64\bin\emacsclientw.exe -c -n -a "" -f C:\Users\chany\Documents\Programming\emacs\.emacs.d\server\server
+* Emacs Windows shortcut
+  Create a windows shortcut file and give it a path: C:\Users\chany\Documents\Programming\emacs\emacs-26.3-x86_64\bin\emacsclientw.exe -c -n -a ""
 * Basics
 ** C-x z: Repeats previous command. Run in once and then subsequently press z to repeat. e.g. C-p C-x z then zzzzzz
 ** M-%: find & replace string. Type 'y' to replace, '!' to replace all occurences below the point.
