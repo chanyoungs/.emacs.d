@@ -20,9 +20,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(conda-anaconda-home "C:/Users/chanyoungs/Anaconda2")
  '(package-selected-packages
    (quote
-    (auctex js2-mode browse-url-dwim iedit expand-region beacon impatient-mode simple-httpd atom-one-dark-theme cherry-blossom-theme ample-theme monokai-theme elpy smartparens node\.js org flycheck el2org zenburn-theme which-key use-package try counsel color-theme auto-org-md auto-complete ace-window))))
+    (atomic-chrome auctex js2-mode browse-url-dwim iedit expand-region beacon impatient-mode simple-httpd atom-one-dark-theme cherry-blossom-theme ample-theme monokai-theme elpy smartparens node\.js org flycheck el2org zenburn-theme which-key use-package try counsel color-theme auto-org-md auto-complete ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

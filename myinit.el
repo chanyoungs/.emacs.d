@@ -426,3 +426,8 @@ is already narrowed."
 				 (before-save . tide-format-before-save)))
 
 (add-hook 'rjsx-mode-hook 'tide-mode)
+
+(use-package atomic-chrome
+  :ensure t
+  :config
+  (atomic-chrome-start-server))
