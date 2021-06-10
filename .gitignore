@@ -1,5 +1,6 @@
 # Ignore these specific files
 # init.el
+projectile-bookmarks.eld
 
 # Ignore all backup files
 \#*
