@@ -1,5 +1,4 @@
 # Ignore these specific files
-# init.el
 projectile-bookmarks.eld
 
 # Ignore all backup files
@@ -8,6 +7,8 @@ projectile-bookmarks.eld
 
 # Ignore all folders
 */
+# Exceptions
 !lisp/
 !dict/
 !snippets/
+!INITIAL SETUP FILES-README/

@@ -9,7 +9,7 @@
 		 )
      )
 
-    ("CYS-DesktopWindows" (progn
+    ("CYS-DESKTOPWIND" (progn
 			    (setq *emacs-directory* "C:/Users/chany/Programming/emacs")
 			    (setq default-directory "D:/Users/chany/Documents/Programming")
 			    ))
@@ -34,4 +34,3 @@
   (print (format "user-init-file: %s" user-init-file))
   (print (format "user-emacs-directory: %s" user-emacs-directory))
   )
-
