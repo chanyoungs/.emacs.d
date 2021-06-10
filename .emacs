@@ -26,6 +26,7 @@
     (setenv "HOME" (file-name-as-directory *emacs-directory*))
   (setq user-init-file (expand-file-name "init.el" (expand-file-name ".emacs.d" *emacs-directory*  )))
   (setq user-emacs-directory (expand-file-name ".emacs.d" *emacs-directory*))
+  (load user-init-file)
   (print (format "HOME: %s" (getenv "HOME")))
   (print (format "*system*: %s" *system*))
   (print (format "*emacs-directory*: %s" *emacs-directory*))
