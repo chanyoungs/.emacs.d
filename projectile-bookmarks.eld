@@ -1,1 +1,0 @@
-("c:/Users/chany/Programming/emacs/.emacs.d/" "~/.emacs.d/")
