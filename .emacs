@@ -1,20 +1,37 @@
 (let
-    ((dir "C:/Users/chany/Programming/emacs"))
-  (setenv "HOME" (file-name-as-directory dir))
-  (setq user-init-file "C:/Users/chany/Programming/emacs/.emacs.d/init.el")
-  (setq user-emacs-directory "C:/Users/chany/Programming/emacs/.emacs.d/")
-  (setq default-directory "D:/Users/chany/Documents/")
-  (load user-init-file))
+    (
+     (*system* (system-name))
+     (*emacs-directory*))
+  (pcase *system*
+    ("CYS-SP3" (progn
+		 (setq *emacs-directory* "C:/Users/chany/Documents/Programming/emacs")
+		 (setq default-directory "C:/Users/chany/Documents/Programming")
+		 )
+     )
 
-;; Place this file in C:/Users/chany/ and point to the appropriate files
-;;(setq user-init-file "C:/Users/chany/Documents/Programming/emacs/.emacs.d/init.el")
-;;(setq user-emacs-directory "C:/Users/chany/Documents/Programming/emacs/.emacs.d/")
-;;(setq default-directory "C:/Users/chany/Documents/Programming/")
-;;(setenv "HOME" "C:/Users/chany/Documents/Programming/emacs/")
-;;(load user-init-file)
+    ("CYS-DesktopWindows" (progn
+			    (setq *emacs-directory* "C:/Users/chany/Programming/emacs")
+			    (setq default-directory "D:/Users/chany/Documents/Programming")
+			    ))
 
-;;(setq user-init-file "C:/emacs/.emacs.d/init.el")
-;;(setq user-emacs-directory "C:/emacs/.emacs.d/")
-;;(setq default-directory "C:/")
-;;(setenv "HOME" "C:/emacs/")
-;;(load user-init-file)
+
+    ("CYS-Ubuntu" (progn
+		    (setq *emacs-directory* "/home/chanyoungs/Documents/Programming/emacs")
+		    (setq default-directory "/home/chanyoungs/Documents/Programming")
+		    ))
+
+    
+    (otherwise (format "'%s' requires a home directory to be set!" *system*))
+    )
+    (setenv "HOME" (file-name-as-directory *emacs-directory*))
+  (setq user-init-file (expand-file-name "init.el" (expand-file-name ".emacs.d" *emacs-directory*  )))
+  (setq user-emacs-directory (expand-file-name ".emacs.d" *emacs-directory*))
+  (load user-init-file)
+  (print (format "HOME: %s" (getenv "HOME")))
+  (print (format "*system*: %s" *system*))
+  (print (format "*emacs-directory*: %s" *emacs-directory*))
+  (print (format "default-directory: %s" default-directory))
+  (print (format "user-init-file: %s" user-init-file))
+  (print (format "user-emacs-directory: %s" user-emacs-directory))
+  )
+
