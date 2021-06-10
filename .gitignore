@@ -1,6 +1,8 @@
 # Ignore these specific files
 projectile-bookmarks.eld
 ac-comphist.dat
+projectile.cache
+recentf
 
 # Ignore all backup files
 \#*
