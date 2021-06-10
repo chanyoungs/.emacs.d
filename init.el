@@ -1,5 +1,4 @@
 (setenv "GIT_ASKPASS" "git-gui--askpass")
-;;(setq default-directory "C:/Users/chany/Documents/Programming/")
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/"))
